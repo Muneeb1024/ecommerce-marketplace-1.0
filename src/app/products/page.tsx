@@ -22,7 +22,12 @@ function Products() {
         <section className="wrapper1">
             <Topheader2 />
             <Header2 />
+
+
             <div className="wrapper1 bg-[#FAFAFA]">
+
+
+
                 <div className="wrapper3 flex flex-col items-center md:items-start gap-[34px] px-10 lg:px-0">
 
                     <div className="flex items-center font-bold space-x-[10px] py-6">
@@ -32,8 +37,6 @@ function Products() {
                         <Link href={"/shop"}>
                             <MdArrowForwardIos className="text-[#737373] text-lg" />
                         </Link>
-
-
                         <Link href={"/shop"}>
                             <span className="text-[14px] text-[#737373]">Shop</span>
                         </Link>
@@ -129,6 +132,10 @@ function Products() {
 
 
                 </div>
+
+
+
+
             </div>
 
             <div className="wrapper2 py-[34px] flex items-center justify-center gap-[10px] md:gap-[45px] font-bold text-[#737373] text-[14px]">

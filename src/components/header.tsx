@@ -1,5 +1,7 @@
 'use client'
 import Link from "next/link";
+// import { ClerkLoaded, SignedIn, SignInButton, UserButton, useUser } from "@clerk/nextjs";
+
 import { IoHeartOutline } from "react-icons/io5";
 import { IoCartOutline } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
@@ -7,6 +9,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import { TbMenuDeep } from "react-icons/tb";
 import { MdKeyboardArrowDown } from "react-icons/md";
 export default function Header() {
+    // const { user } = useUser();
+
     return (
         <header className="wrapper1 mt-[23px] mb-[8px] sm:mt-[12px] sm:mb-[8px] h-[58px] px-10 text-[#252B42] flex items-center justify-between">
 
@@ -39,12 +43,12 @@ export default function Header() {
                 </div>
 
                 <IoSearch />
-
-                <div className="flex items-center space-x-1">
-                    <IoCartOutline />
-                    <span className="hidden md:flex text-[12px]">1</span>
-                </div>
-
+                <Link href={"/cart"}>
+                    <div className="flex items-center space-x-1">
+                        <IoCartOutline />
+                        {/* <span className="hidden md:flex text-[12px]">1</span> */}
+                    </div>
+                </Link>
                 <div className="hidden md:flex items-center space-x-1">
                     <IoHeartOutline />
                     <span className="hidden md:flex text-[12px]">1</span>
@@ -58,4 +62,8 @@ export default function Header() {
         </header>
     )
 }
+
+
+
+
 

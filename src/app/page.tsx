@@ -14,7 +14,7 @@ export default function Home() {
     <div className="wrapper1">
 
       <Topheader />
-      <Header /> 
+      <Header />
       <Hero />
       <Editorspics />
       <Products />
@@ -22,7 +22,12 @@ export default function Home() {
       <Universal />
       <Featured />
       <Footer />
-   
+
     </div>
   );
 }
+
+
+
+
+

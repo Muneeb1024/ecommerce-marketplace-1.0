@@ -8,12 +8,16 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import Products2 from "@/components/products2";
 import Logos from "@/components/logos";
 import Footer from "@/components/footer";
+
 function Shop() {
+
+
     return (
         <section className="wrapper1">
             <Topheader2 />
             <Header2 />
             <Categories />
+
 
             <div className="wrapper1 bg-white">
                 <div className="wrapper2 py-6 flex flex-col items-center md:flex-row justify-between gap-6 sm:px-10 lg:px-0">
@@ -48,6 +52,8 @@ function Shop() {
             </div>
 
             <Products2 />
+
+
             <div className="mx-auto mb-12 flex items-center justify-center w-[313px] h-[74px] text-[14px] font-bold">
                 <div className="bg-[#F3F3F3] border border-[#BDBDBD] rounded-s-[5px] w-[85px] h-full flex items-center justify-center text-[#BDBDBD]">
                     First
@@ -68,7 +74,6 @@ function Shop() {
             </div>
 
             <Logos />
-
             <Footer />
         </section>
     )

@@ -118,7 +118,7 @@ function Checkout() {
             email: formValues.email,
             cartItems: cartItems.map(item => ({
                 _type: 'refrence',
-                ref: item._id,
+                _ref: item._id,
             })),
             total: subTotal,
             discount: Discount,

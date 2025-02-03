@@ -40,6 +40,11 @@ export const orders = {
             type: "string",
         },
         {
+            name: "discount",
+            title: "Discount",
+            type: "number",
+        },
+        {
             name: "cartItems",
             title: "Cart Items",
             type: "array",
@@ -49,7 +54,7 @@ export const orders = {
             name: "total",
             title: "Total",
             type: "number",
-            
+
         },
         {
             name: "status",

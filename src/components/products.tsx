@@ -10,8 +10,11 @@ import { addToCart } from "@/app/actions/actions";
 import swal from "sweetalert2";
 import { products } from "@/sanity/schemaTypes/product";
 
+
+
 function Products() {
     const [product, setProduct] = useState<Product[]>([]);
+
 
     useEffect(() => {
         async function fetchproduct() {

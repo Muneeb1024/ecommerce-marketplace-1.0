@@ -9,6 +9,7 @@ import Footer from "@/components/footer";
 import Header2 from "@/components/header2";
 import Topheader2 from "@/components/topheader2";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function CartPage() {
     const [cartItems, setCartItems] = useState<Product[]>([]);
@@ -55,6 +56,7 @@ function CartPage() {
         return cartItems.reduce((total, item) => total + item.price * item.inventory, 0);
     };
 
+    const router = useRouter();
     const handleProceed = () => {
         Swal.fire({
             title: "Proceed to checkout?",
@@ -67,6 +69,7 @@ function CartPage() {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire("Checkout successful!", "Your order has been placed.", "success");
+                router.push("/checkout")
                 setCartItems([]);
             }
         });

@@ -10,7 +10,7 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { IoIosArrowForward } from "react-icons/io";
 import { client } from "@/sanity/lib/client";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
 
 
 

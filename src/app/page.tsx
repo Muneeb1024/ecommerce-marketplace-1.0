@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Topheader from "@/components/topheader";
 import Header from "@/components/header";
 import Hero from "@/components/hero";

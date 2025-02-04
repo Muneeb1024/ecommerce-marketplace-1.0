@@ -51,7 +51,7 @@ export default function Header() {
                 </Link>
                 <div className="hidden md:flex items-center space-x-1">
                     <IoHeartOutline />
-                    <span className="hidden md:flex text-[12px]">1</span>
+                    {/* <span className="hidden md:flex text-[12px]">1</span> */}
                 </div>
 
                 <TbMenuDeep className="md:hidden" />

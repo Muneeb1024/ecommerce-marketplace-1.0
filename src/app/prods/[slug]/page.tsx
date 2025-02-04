@@ -13,9 +13,14 @@ import Link from "next/link";
 import { IoIosStar } from "react-icons/io";
 // import { IoIosArrowForward } from "react-icons/io";
 import { FaRegStar } from "react-icons/fa6";
-import { FiHeart } from "react-icons/fi";
-import { BsCart } from "react-icons/bs";
-import { IoEye } from "react-icons/io5";
+// import { FiHeart } from "react-icons/fi";
+// import { BsCart } from "react-icons/bs";
+// import { IoEye } from "react-icons/io5";
+import Products3 from "@/components/product3";
+import Combined from "@/components/combined";
+
+
+
 
 interface ProductPageProps {
     params: Promise<{ slug: string }>
@@ -36,6 +41,9 @@ async function getProduct(slug: string): Promise<Product> {
 export default async function ProductPage({ params }: ProductPageProps) {
     const { slug } = await params;
     const product = await getProduct(slug);
+
+
+
 
     return (
         <div className="wrapper1">
@@ -131,7 +139,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                 <span className="w-[30px] h-[30px] rounded-full bg-[#252B42]"></span>
                             </div>
 
-                            <div className="flex items-center gap-[10px]">
+                            {/* <div className="flex items-center gap-[10px]">
                                 <button className="w-[148px] h-[44px] bg-[#23A6F0] rounded-[5px] text-[14px] font-bold text-white">
                                     Select Options
                                 </button>
@@ -144,7 +152,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                 <div className="flex items-center justify-center w-[40px] h-[40px] rounded-full border border-[#E8E8E8] bg-[#FFFFFF] text-xl text-[#252B42]">
                                     <IoEye />
                                 </div>
-                            </div>
+                            </div> */}
+
+                            <Combined />
+
                         </div>
 
                     </div>
@@ -155,6 +166,86 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             </div>
 
+
+            <div className="wrapper2 py-[34px] flex items-center justify-center gap-[10px] md:gap-[45px] font-bold text-[#737373] text-[14px]">
+                <span className="underline font-semibold">Description</span>
+                <span className="">Additional Information</span>
+                <div className="flex items-center gap-[5px]">
+                    <span>Reviews</span>
+                    <span className="text-[#23856D]">(0)</span>
+                </div>
+            </div>
+
+            <div className="wrapper2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] pt-6 pb-12">
+
+                <div className="mx-auto">
+
+                    {
+                        product.productImage && (
+                            <Image
+                                src={urlFor(product.productImage).url()}
+                                alt="product"
+                                width={321}
+                                height={271}
+                                className="w-[321px] h-[271px] md:w-[316px] md:h-[372px]"
+                            />
+                        )
+                    }
+
+                </div>
+
+                <div className="mx-auto flex flex-col items-start justify-start text-[14px]">
+                    <h3 className="mb-[30px] font-bold text-[#252B42] text-[24px] leading-[50px] tracking-[0.1px]">the quick fox jumps over</h3>
+
+                    <p className="gap-[30px] w-[290px] tracking-[0.2px]">Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met. <br /><br />
+
+                        Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met. <br /><br />
+
+                        Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.</p>
+                </div>
+
+                <div className="mx-auto flex flex-col items-start justify-start">
+                    <h3 className="mb-[30px] font-bold text-[#252B42] text-[24px] leading-[50px]">the quick fox jumps over</h3>
+                    <div className="mb-[10px] flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                    <div className="mb-[10px] flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                    <div className="mb-[10px] flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                    <div className="mb-[25px] flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                    <h3 className="mb-[30px] font-bold text-[#252B42] text-[24px] leading-[50px]">the quick fox jumps over</h3>
+                    <div className="mb-[10px] flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                    <div className="mb-[10px] flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                    <div className="mb-[10px] flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                    <div className=" flex items-center gap-[20px] text-sm font-bold text-[#737373]">
+                        <MdArrowForwardIos className=" text-xl" />
+                        <h6>the quick fox jumps over the lazy dog</h6>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <Products3 />
             <Logos />
             <Footer />
         </div>

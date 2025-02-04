@@ -11,6 +11,7 @@ import Topheader2 from "@/components/topheader2";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+
 function CartPage() {
     const [cartItems, setCartItems] = useState<Product[]>([]);
 

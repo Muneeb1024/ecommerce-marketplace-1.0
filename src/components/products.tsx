@@ -40,8 +40,8 @@ function Products() {
 
 
     return (
-        <section className="wrapper2 py-[80px] flex flex-col items-center">
-
+        <section className="wrapper2 py-[80px] flex flex-col items-center md:items-start">
+            <h1 className="font-bold text-2xl text-center md:text-start text-black mb-5">Best Selling Products</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[30px]">
                 {
                     product.map((product) => (

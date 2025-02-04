@@ -15,7 +15,7 @@ function Header3() {
                 </Link>
                 <ul className="hidden md:flex items-center space-x-[15px] text-sm text-[#737373] font-bold">
                     <Link href={"/"}>Home</Link>
-                    <Link href={"/products"}>Product</Link>
+                    <Link href={"/shop"}>Product</Link>
                     <Link href={"/pricing"}>Pricing</Link>
                     <Link href={"/contact"}>Contact</Link>
                 </ul>

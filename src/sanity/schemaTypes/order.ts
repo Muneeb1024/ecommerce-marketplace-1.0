@@ -48,7 +48,7 @@ export const orders = {
             name: "cartItems",
             title: "Cart Items",
             type: "array",
-            of: [{ type: "reference", to: [{ type: "products" }] }]
+            of: [{ type: "reference", to: [{ type: "product" }] }]
         },
         {
             name: "total",

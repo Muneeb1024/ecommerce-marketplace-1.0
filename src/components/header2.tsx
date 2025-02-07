@@ -6,55 +6,126 @@ import { IoSearch } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
 import { TbMenuDeep } from "react-icons/tb";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import { ClerkLoaded, SignedIn, UserButton, useUser } from "@clerk/nextjs";
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { Search } from "@/components/search";
+
+
 function Header2() {
+    const { user } = useUser();
+
+
     return (
         <div className="wrapper1 bg-white">
             <header className="mt-[23px] mb-[8px] sm:mt-[12px] sm:mb-[8px] wrapper3 h-[58px] px-7 sm:px-10 lg:px-0 text-[#252B42] flex items-center justify-between">
+                <ClerkLoaded>
+                    <div className="flex items-center gap-[119px]">
+                        <Link href="/">
+                            <h1 className="font-bold text-2xl">
+                                Bandage
+                            </h1>
+                        </Link>
+                        <ul className="hidden md:flex items-center space-x-[15px] text-sm text-[#737373] font-bold">
+                            <Link href={"/"}>Home</Link>
+                            <div className="flex items-center space-x-2">
+                                <Link href={"/shop"}>Shop</Link>
+                                <MdKeyboardArrowDown className="text-lg" />
+                            </div>
+                            <Link href={"/about"}>About</Link>
+                            <Link href={"/blog"}>Blog</Link>
+                            <Link href={"/contact"}>Contact</Link>
+                            <Link href={"/team"}>Pages</Link>
+                        </ul>
 
-                <div className="flex items-center gap-[119px]">
-                    <Link href="/">
-                        <h1 className="font-bold text-2xl">
-                            Bandage
-                        </h1>
-                    </Link>
-                    <ul className="hidden md:flex items-center space-x-[15px] text-sm text-[#737373] font-bold">
-                        <Link href={"/"}>Home</Link>
-                        <div className="flex items-center space-x-2">
-                            <Link href={"/shop"}>Shop</Link>
-                            <MdKeyboardArrowDown className="text-lg" />
-                        </div>
-                        <Link href={"/about"}>About</Link>
-                        <Link href={"/blog"}>Blog</Link>
-                        <Link href={"/contact"}>Contact</Link>
-                        <Link href={"/team"}>Pages</Link>
-                    </ul>
-
-                </div>
-
-
-
-                <div className="max-w-[315px] gap-[16px] text-[#252B42] sm:text-[#23A6F0] flex items-center justify-between text-xl sm:text-[16px]">
-                    <div className="hidden lg:flex items-center gap-[5px]">
-                        <IoPersonOutline className="text-[12px]" />
-                        <span className="text-sm font-bold">Login / Register</span>
                     </div>
 
-                    <IoSearch className="hidden sm:inline" />
-                    <Link href={"/cart"}>
-                        <div className="hidden sm:flex items-center space-x-1">
-                            <IoCartOutline />
+
+
+                    <div className="max-w-[315px] gap-[16px] text-[#252B42] sm:text-[#23A6F0] flex items-center justify-between text-xl sm:text-[16px]">
+                        <div className="flex items-center gap-[5px]">
+                            {user ? (
+                                <div className="flex items-center space-x-2">
+                                    <UserButton />
+                                    <div className="hidden sm:block text-xs">
+                                        <p className="text-gray-400">Welcome Back</p>
+                                        <p className="font-bold">{user.fullName}</p>
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link href={"/sign-in"} className="flex items-center gap-[5px]">
+                                    <IoPersonOutline className="text-[12px]" />
+                                    <span className="text-sm font-bold">Login / Register</span>
+                                </Link>
+                            )}
+
+                        </div>
+
+
+                        <Popover>
+                            <PopoverTrigger><IoSearch /></PopoverTrigger>
+                            <PopoverContent><Search /></PopoverContent>
+                        </Popover>
+
+                        <SignedIn>
+                            <Link href={"/cart"}>
+                                <div className="hidden sm:flex items-center space-x-1">
+                                    <IoCartOutline />
+                                    {/* <span className="hidden md:flex text-[12px]">1</span> */}
+                                </div>
+                            </Link>
+                        </SignedIn>
+                        <div className="hidden md:flex items-center space-x-1">
+                            <IoHeartOutline />
                             {/* <span className="hidden md:flex text-[12px]">1</span> */}
                         </div>
-                    </Link>
-                    <div className="hidden md:flex items-center space-x-1">
-                        <IoHeartOutline />
-                        <span className="hidden md:flex text-[12px]">1</span>
+                        <Sheet>
+                            <SheetTrigger>
+                                <TbMenuDeep className="md:hidden" />
+                            </SheetTrigger>
+                            <SheetContent>
+                                <SheetHeader>
+                                    <SheetTitle>
+                                        <Link href="/" className="text-black">
+                                            <h1 className="font-bold text-2xl">
+                                                Bandage
+                                            </h1>
+                                        </Link>
+                                    </SheetTitle>
+                                    <SheetDescription>
+                                        <div className="mt-5">
+
+                                            <ul className="flex flex-col items-start space-y-[20px] text-lg text-[#737373] font-bold">
+                                                <Link href={"/"}>Home</Link>
+                                                <div className="flex items-center space-x-2">
+                                                    <Link href={"/shop"}>Shop</Link>
+                                                    <MdKeyboardArrowDown className="text-lg" />
+                                                </div>
+                                                <Link href={"/about"}>About</Link>
+                                                <Link href={"/blog"}>Blog</Link>
+                                                <Link href={"/contact"}>Contact</Link>
+                                                <Link href={"/team"}>Pages</Link>
+                                            </ul>
+
+                                        </div>
+                                    </SheetDescription>
+                                </SheetHeader>
+                            </SheetContent>
+                        </Sheet>
                     </div>
 
-                    <TbMenuDeep className="md:hidden" />
-                </div>
-
-
+                </ClerkLoaded>
 
             </header>
         </div>

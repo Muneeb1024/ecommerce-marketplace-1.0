@@ -1,82 +1,101 @@
 'use client'
-import Image from "next/image";
+import { useState } from "react";
 import Categories from "@/components/categories";
 import Header2 from "@/components/header2";
 import Topheader2 from "@/components/topheader2";
-import { BsListCheck } from "react-icons/bs";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import Products2 from "@/components/products2";
 import Logos from "@/components/logos";
 import Footer from "@/components/footer";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 function Shop() {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]); // Default range
+  const [selectedCategory, setSelectedCategory] = useState<string>(""); // For category selection
+  const [showDropdown, setShowDropdown] = useState<boolean>(false); // For dropdown visibility
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
 
-    return (
-        <section className="wrapper1">
-            <Topheader2 />
-            <Header2 />
-            <Categories />
+  // Toggle dropdown visibility when Filter button is clicked
+  const handleFilterClick = () => {
+    setShowDropdown(!showDropdown);
+  };
 
+  return (
+    <section className="wrapper1">
+      <Topheader2 />
+      <Header2 />
+      <Categories />
 
-            <div className="wrapper1 bg-white">
-                <div className="wrapper2 py-6 flex flex-col items-center md:flex-row justify-between gap-6 sm:px-10 lg:px-0">
-                    <h6 className="text-[14px] font-bold text-[#737373]">Showing all 12 results
-                    </h6>
+      <div className="wrapper1 bg-white">
+        <div className="wrapper2 py-6 flex flex-col items-center md:flex-row justify-between gap-6 sm:px-10 lg:px-0">
 
-                    <div className="flex items-center h-[46px] space-x-[15px]">
-                        <span className="text-[14px] text-[#737373] font-bold">Views:
-                        </span>
-                        <Image src={"/icons/btn.png"}
-                            alt="btn"
-                            width={46}
-                            height={46}
-                            className="border rounded-[5px]"
-                        ></Image>
-                        <div className="border rounded-[5px] w-[46px] h-[46px] flex items-center justify-center">
-                            <BsListCheck className="text-xl text-[#737373]" />
-                        </div>
-                    </div>
+          {/* Search Input */}
+          <div className="py-6 flex flex-col items-center">
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="w-[300px] border pl-4 py-2 rounded-md outline-none"
+            />
+          </div>
 
-                    <div className="h-[50px] gap-[15px] flex items-center">
-                        <div className="flex items-center justify-center h-full w-[141px] text-[#737373] space-x-[6px] rounded-[5px] border">
-                            <span className="text-[14px] ">Popularity</span>
-                            <MdKeyboardArrowDown className="text-lg" />
-                        </div>
-                        <button className="text-center h-full w-[94px] bg-[#23A6F0] rounded-[5px] text-white text-[14px] font-bold">
-                            Filter
-                        </button>
-                    </div>
+          {/* Price Range Slider */}
+          <div className="flex flex-col items-center justify-center">
+            <span className="text-sm font-bold mb-2">Price Range: ${priceRange[0]} - ${priceRange[1]}</span>
+            <Slider
+              range
+              min={0}
+              max={1000} // Max price adjust kar sakte hain
+              value={priceRange}
+              onChange={(value) => setPriceRange(value as [number, number])}
+              step={10}
+              className="w-[300px]"
+            />
+          </div>
 
-                </div>
-            </div>
+          {/* Filter Button */}
+          <div className="h-[50px] gap-[15px] flex items-center justify-center md:justify-end w-[300px]">
+            <button
+              onClick={handleFilterClick}
+              className="text-center h-full w-[94px] bg-[#23A6F0] rounded-[5px] text-white text-[14px] font-bold"
+            >
+              Filter
+            </button>
+          </div>
+        </div>
 
-            <Products2 />
+        {/* Category Dropdown (visible when Filter button is clicked) */}
+        {showDropdown && (
+          <div className="absolute bg-white border shadow-md w-[300px] p-4 mt-2 rounded-md">
+            <h3 className="font-bold mb-2">Select Category</h3>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full border py-2 px-4 rounded-md"
+            >
+              <option value="">All Categories</option>
+              {/* Add your categories here */}
+              <option value="electronics">Electronics</option>
+              <option value="furniture">Furniture</option>
+              <option value="clothing">Clothing</option>
+              <option value="groceries">Groceries</option>
+            </select>
+          </div>
+        )}
+      </div>
 
+      {/* Pass priceRange and selectedCategory to Products2 component */}
+      <Products2 searchQuery={searchQuery} priceRange={priceRange} category={selectedCategory} />
 
-            <div className="mx-auto mb-12 flex items-center justify-center w-[313px] h-[74px] text-[14px] font-bold">
-                <div className="bg-[#F3F3F3] border border-[#BDBDBD] rounded-s-[5px] w-[85px] h-full flex items-center justify-center text-[#BDBDBD]">
-                    First
-                </div>
-                <div className="bg-white active:bg-[#23A6F0]  active:text-white border border-[#BDBDBD] w-[46px] h-full flex items-center justify-center text-[#23A6F0]">
-                    1
-                </div>
-                <div className="bg-white active:bg-[#23A6F0]  active:text-white border border-[#BDBDBD] w-[46px] h-full flex items-center justify-center text-[#23A6F0]">
-                    2
-                </div>
-                <div className="bg-white active:bg-[#23A6F0]  active:text-white border border-[#BDBDBD] w-[46px] h-full flex items-center justify-center text-[#23A6F0]">
-                    3
-                </div>
-                <div className="bg-white active:bg-[#23A6F0]  active:text-white border border-[#BDBDBD] rounded-e-[5px] w-[85px] h-full flex items-center justify-center text-[#23A6F0]">
-                    Next
-                </div>
-
-            </div>
-
-            <Logos />
-            <Footer />
-        </section>
-    )
+      <Logos />
+      <Footer />
+    </section>
+  );
 }
 
 export default Shop;

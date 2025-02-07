@@ -14,15 +14,15 @@ function Categories() {
 
                     <div className="flex items-center font-bold space-x-[10px]">
                         <Link href={"/"}>
-                            <span className="text-[14px] text-[#252B42] focus:text-[#737373]">Home</span>
+                            <span className="text-[14px] text-[#252B42]">Home</span>
                         </Link>
                         <Link href={"/shop"}>
-                            <MdArrowForwardIos className="text-[#737373] text-lg" />
+                            <MdArrowForwardIos className="text-[#252B42] text-lg" />
                         </Link>
 
 
                         <Link href={"/shop"}>
-                            <span className="text-[14px] text-[#252B42] focus:text-[#737373]">Shop</span>
+                            <span className="text-[14px] text-gray-400 hover:text-[#737373]">Shop</span>
                         </Link>
                     </div>
 

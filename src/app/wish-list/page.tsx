@@ -11,7 +11,7 @@ function Wishlist() {
             <Header />
 
             <div className='flex items-center justify-center h-screen'>
-                <h1 className='font-bold texct-3xl'>Working On It</h1>
+                <h1 className='font-bold text-3xl'>Working On It</h1>
             </div>
             
             <Footer />
